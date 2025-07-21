@@ -87,7 +87,7 @@ def display_chart(self, event, global_vars):
         cumulative_income = values.sum()
         gini_index = ((2 * np.sum((np.arange(1, n + 1) * values))) /
                       (n * cumulative_income)) - ((n + 1) / n)
-        print(gini_index)
+        #print(gini_index)
         return gini_index
     
     

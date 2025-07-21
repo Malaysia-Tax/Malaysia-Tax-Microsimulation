@@ -228,7 +228,7 @@ def generate_policy_revenues():
         #print('block_selected_dict in adjust behavior',block_selected_dict)
         pol3 = Policy(DEFAULTS_FILENAME=global_variables['DEFAULTS_FILENAME'])   
         years, reform=read_reform_dict(block_selected_dict)
-        print('reform dict in adjust behavior', reform)
+        #print('reform dict in adjust behavior', reform)
         pol3.implement_reform(reform['policy'])
         calc3 = Calculator(policy=pol3, records=recs, corprecords=crecs, gstrecords=grecs, verbose=verbose)
       
@@ -565,6 +565,9 @@ def generate_policy_revenues():
             
             dt_tax_all12 = dt_tax_all12.reset_index()
             dt_tax_all34 = dt_tax_all34.reset_index()
+            dt_tax_all12 = dt_tax_all12[[col for col in dt_tax_all12.columns if str(start_year) <= col[-4:] <= str(end_year) or col == 'index']]
+            dt_tax_all34 = dt_tax_all34[[col for col in dt_tax_all34.columns if str(start_year) <= col[-4:] <= str(end_year) or col == 'index']]
+            #print(dt_tax_all12)
             # ETR is calculated for the Start Year
             #print(dt_percentile[tax_type]['All'])
             dt_percentile[tax_type]['All']['ETR'] = dt_percentile[tax_type]['All'][tax_collection_var+'_'+str(start_year)]/dt_percentile[tax_type]['All'][income_measure[tax_type]+'_'+str(start_year)]            
@@ -594,7 +597,7 @@ def generate_policy_revenues():
                 window_dist[tax_type].geometry("1000x700+600+140")
                 header1 = ["header","", tax_type.upper()]
                 header2 = ["header",'Assessible Income']
-                for year in range(data_start_year, start_year+1):
+                for year in range(start_year, start_year+1):
                     header1 = header1+[tax_type.upper()]
                     header2 = header2+['Current Law '+str(year)]                    
                 for year in range(start_year, end_year+1):
@@ -612,7 +615,7 @@ def generate_policy_revenues():
                 window_dist[tax_type].geometry("1000x700+600+140")
                 header1 = ["header","", tax_type.upper()+' (LCU)']
                 header2 = ["header",'Decile']
-                for year in range(data_start_year, start_year+1):
+                for year in range(start_year, start_year+1):
                     header1 = header1+[tax_type.upper()+' (LCU)']
                     header2 = header2+['Current Law '+str(year)]                    
                 for year in range(start_year, end_year+1):
