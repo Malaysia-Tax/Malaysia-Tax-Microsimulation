@@ -2,11 +2,11 @@
 [![Codecov](https://codecov.io/gh/TPRU-demo/pitaxcalc-demo/branch/master/graph/badge.svg)](https://codecov.io/gh/TPRU-demo/pitaxcalc-demo)
 
 
-Demonstration repository for Botswana microsimulation model
+Demonstration repository for Malaysia microsimulation model
 ============================================================================
 
-This repository will be used in the IMF training
-sessions beginning on April 2025.
+This repository was created during Duke University training
+in July 2025.
 
 Getting Started
 ---------------
